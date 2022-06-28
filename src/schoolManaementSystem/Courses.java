@@ -4,7 +4,7 @@ public class Courses {
     private String courseName;
     private final int courseId;
     private static int idIncrement = 1;
-    private boolean status;
+    private boolean status = false;
 
     public Courses(String name){
         this.courseName  = name;

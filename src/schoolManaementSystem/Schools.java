@@ -3,7 +3,7 @@ package schoolManaementSystem;
 import java.util.ArrayList;
 
 public class Schools {
-    private ArrayList<Courses> courseList ;
+    private ArrayList<Courses> courseList  = new ArrayList<>();
     private ArrayList<Students> studentList = new ArrayList<>();
     private String schoolName;
     private String schoolAddress;
@@ -18,8 +18,8 @@ public class Schools {
         return courseList;
     }
 
-    public void CreateCourse(Courses newCourse) {
-
+    public void CreateCourse(String coursename) {
+        Courses newCourse = new Courses(coursename);
         courseList.add(newCourse);
     }
 
@@ -49,10 +49,10 @@ public class Schools {
         this.schoolAddress = schoolAddress;
     }
 
-    public void admitStudent(String firstName,String lastName,Gender gender,int age) {
-       Students newStudent = new Students(firstName,lastName,gender,age);
+    public void admitStudent(Students student) {
+       //Students newStudent = new Students(firstName,lastName,gender,age);
 
-        studentList.add(newStudent);    }
+        studentList.add(student);    }
 
     public Students findStudent(int id) {
         int studentIndexToFind = -1;
@@ -70,8 +70,26 @@ public class Schools {
         return studentList.get(studentIndexToFind);
 
     }
+    public Students findStuden(int id) {
+        int idd = id-1;
+        return  studentList.get(idd);
+//        Students foundstudent;
+//        for(Students var : studentList){
+//            if (var.getStudentId() == id){
+//               foundstudent = var;
+//                break;
+//            }
+//
+//        }
+//        if(foundstudent){
+//            throw new IllegalArgumentException("Student Id " +id + " not found");
+//        }
+//        return foundstudent;
+
+    }
     public void expelStudent(int id){
-        Students studentToExpel = findStudent(id);
-        studentList.remove(studentToExpel);
+        Students tofind= findStuden(id);
+
+        studentList.remove(tofind);
     }
 }
